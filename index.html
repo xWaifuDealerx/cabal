@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>$CABAL of Fortune · Wealth Leaderboard</title>
+<link rel="icon" type="image/png" href="https://iili.io/BtMUCX9.png">
+<link rel="apple-touch-icon" href="https://iili.io/BtMUCX9.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -58,7 +60,57 @@ html[data-lang="zh"] body{font-family:'Noto Serif SC','Cormorant Garamond',serif
   padding:48px 24px 160px;
 }
 
-.topbar{display:flex;align-items:center;justify-content:space-between;padding-bottom:28px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding-bottom:28px;flex-wrap:wrap;gap:12px}
+.alert-bar{
+  position:relative;z-index:5;
+  background:linear-gradient(90deg, #1c5e30 0%, #2fbf71 50%, #1c5e30 100%);
+  border-bottom:1px solid rgba(255,255,255,.15);
+  box-shadow:0 0 22px rgba(47,191,113,.35);
+}
+.alert-bar-inner{
+  max-width:1280px;margin:0 auto;padding:9px 18px;
+  display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center;
+  font-family:'Cinzel',serif;letter-spacing:.16em;font-size:11px;font-weight:700;
+  color:#eaffea;text-transform:uppercase;text-shadow:0 1px 1px rgba(0,0,0,.5);
+}
+html[data-lang="zh"] .alert-bar-inner{font-family:'Noto Serif SC',serif;letter-spacing:.1em;text-transform:none;font-weight:600}
+.ab-dot{
+  width:8px;height:8px;border-radius:50%;background:#aaffc6;
+  box-shadow:0 0 10px #aaffc6, 0 0 18px rgba(170,255,198,.6);
+  animation:ab-blink 1.3s ease-in-out infinite;
+}
+@keyframes ab-blink{0%,100%{opacity:1}50%{opacity:.45}}
+.ab-logo{height:20px;width:auto;display:block;border-radius:3px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.ab-link{
+  color:#fff;text-decoration:none;
+  border:1px solid rgba(255,255,255,.6);
+  padding:2px 10px;border-radius:2px;letter-spacing:.18em;
+  transition:all .2s ease;
+}
+.ab-link:hover{background:rgba(255,255,255,.18);border-color:#fff}
+
+.topbar-actions{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap}
+.airdrop-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 12px;cursor:not-allowed;
+  background:linear-gradient(180deg, #ffe79a 0%, #d4af37 60%, #9a7a1e 100%);
+  color:#2a0508;border:1px solid #d4af37;border-radius:3px;
+  font-family:'Cinzel',serif;font-weight:700;letter-spacing:.18em;
+  font-size:11px;text-transform:uppercase;
+  box-shadow:0 0 0 1px rgba(0,0,0,.3) inset, 0 0 12px rgba(255,216,107,.45);
+  opacity:.95;
+}
+html[data-lang="zh"] .airdrop-btn{font-family:'Noto Serif SC',serif;letter-spacing:.08em;text-transform:none;font-size:13px}
+.airdrop-btn .ad-emoji{font-size:14px;filter:drop-shadow(0 0 6px rgba(255,150,30,.6))}
+.airdrop-btn .ad-soon{
+  font-size:9px;letter-spacing:.18em;color:#5a0d0d;
+  background:rgba(255,255,255,.55);padding:2px 6px;border-radius:2px;
+}
+html[data-lang="zh"] .airdrop-btn .ad-soon{font-size:10px;letter-spacing:.06em}
+@media (max-width:780px){
+  .airdrop-btn{padding:6px 10px;font-size:10px}
+  .airdrop-btn .ad-soon{display:none}
+}
 .brand-mark{
   display:flex;align-items:center;gap:14px;
   color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.3em;
@@ -76,6 +128,11 @@ html[data-lang="zh"] body{font-family:'Noto Serif SC','Cormorant Garamond',serif
   0%,100%{box-shadow:0 0 0 2px #2a0508, 0 0 0 3px #d4af37, 0 0 12px rgba(255,216,107,.45)}
   50%   {box-shadow:0 0 0 2px #2a0508, 0 0 0 3px #ffe79a, 0 0 26px rgba(255,216,107,.95), 0 0 40px rgba(255,91,91,.35)}
 }
+.brand-logo{
+  height:46px;width:auto;display:block;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.6)) drop-shadow(0 0 10px rgba(255,140,30,.18));
+}
+@media (max-width:780px){.brand-logo{height:36px}}
 .lang-toggle{
   display:inline-flex;border:1px solid rgba(212,175,55,.45);
   border-radius:999px;padding:4px;background:rgba(10,3,6,.7);
@@ -142,7 +199,7 @@ html[data-lang="zh"] body{font-family:'Noto Serif SC','Cormorant Garamond',serif
 html[data-lang="zh"] .kicker{font-family:'Ma Shan Zheng',serif;letter-spacing:.4em;font-size:13px}
 .title{
   font-family:'Cinzel',serif;font-weight:900;
-  font-size:clamp(30px, 5.6vw, 70px);line-height:1.05;letter-spacing:.04em;
+  font-size:clamp(22px, 6.5vw, 70px);line-height:1.05;letter-spacing:.03em;
   white-space:nowrap;
   background:linear-gradient(90deg, #b78a1c 0%, #ffd86b 22%, #fff1b8 50%, #ffd86b 78%, #b78a1c 100%);
   background-size:200% 100%;background-position:0% 50%;
@@ -157,7 +214,7 @@ html[data-lang="zh"] .kicker{font-family:'Ma Shan Zheng',serif;letter-spacing:.4
 }
 html[data-lang="zh"] .title{
   font-family:'Ma Shan Zheng','Noto Serif SC',serif;font-weight:400;
-  font-size:clamp(32px, 5.4vw, 70px);letter-spacing:.06em;
+  font-size:clamp(24px, 6vw, 70px);letter-spacing:.05em;
 }
 html[data-lang="zh"] .brand-mark span{white-space:nowrap}
 .title-sub{
@@ -178,7 +235,8 @@ html[data-lang="zh"] .title-sub{font-family:'Noto Serif SC',serif;letter-spacing
   50%   {box-shadow:0 0 18px rgba(255,91,91,1), 0 0 28px rgba(255,91,91,.55), inset 0 0 0 1px rgba(255,255,255,.7)}
 }
 
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:24px}
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:24px}
+@media (max-width:1080px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:780px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .stat{
   position:relative;padding:18px 20px;
@@ -196,6 +254,19 @@ html[data-lang="zh"] .stat .label{font-family:'Noto Serif SC',serif;letter-spaci
   text-shadow:0 0 12px rgba(255,216,107,.25);
 }
 .stat .sub{margin-top:4px;color:#a98a64;font-size:12px;letter-spacing:.16em}
+.stat-burnt{position:relative}
+.stat-burnt .burnt-value{
+  background:linear-gradient(180deg, #ffd6a8 0%, #ff8c2a 50%, #c43d10 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 14px rgba(255,140,42,.35);
+}
+.stat-burnt::after{
+  content:"";position:absolute;top:14px;right:14px;width:10px;height:10px;border-radius:50%;
+  background:radial-gradient(circle,#ffd6a8,#ff8c2a 60%,transparent 80%);
+  box-shadow:0 0 14px rgba(255,140,42,.7);
+  animation:ember-pulse 2.4s ease-in-out infinite;opacity:.9;
+}
+@keyframes ember-pulse{0%,100%{opacity:.6;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
 
 .board-wrap{
   margin-top:30px;position:relative;
@@ -388,15 +459,29 @@ footer .footer-token{font-size:11px;letter-spacing:.22em;color:#7e6a4a;font-fami
 html[data-lang="zh"] footer .footer-token{font-family:'Noto Serif SC',serif;letter-spacing:.16em}
 
 @media (max-width:780px){
+  html[data-lang="zh"] .kicker{letter-spacing:.18em;font-size:11px}
+  html[data-lang="zh"] .title{letter-spacing:.02em;font-size:clamp(28px, 7vw, 70px)}
+  html[data-lang="zh"] .title-sub{letter-spacing:.1em;font-size:13px}
   .lb thead th.col-supply,.lb td.col-supply{display:none}
   .lb td,.lb thead th{padding:10px 8px;font-size:13px}
   .amt,.usd{font-size:14px}
   .rank-num{font-size:18px;min-width:28px}
   .dragon{width:160px;height:80px}
+  .kicker{font-size:10px;letter-spacing:.28em}
+  .title-sub{font-size:13px;letter-spacing:.12em}
+  .page{padding:32px 14px 140px}
 }
 </style>
 </head>
 <body>
+<div class="alert-bar">
+  <div class="alert-bar-inner">
+    <span class="ab-dot"></span>
+    <img class="ab-logo" src="https://coinpresso.io/wp-content/uploads/2025/03/four-meme-icon.png" alt="four.meme" />
+    <span data-i18n="bonding-banner">Currently in Bonding Curve · No tax on trading via four.meme</span>
+    <a class="ab-link" href="#" target="_blank" rel="noopener" data-i18n="bonding-link">Trade →</a>
+  </div>
+</div>
 <div class="bg-pattern"></div>
 <div class="bg-glow"></div>
 <div class="sparks" id="sparks"></div>
@@ -405,12 +490,19 @@ html[data-lang="zh"] footer .footer-token{font-family:'Noto Serif SC',serif;lett
 <div class="page">
   <div class="topbar">
     <div class="brand-mark">
-      <div class="coin">福</div>
+      <img class="brand-logo" src="https://iili.io/BtMUCX9.png" alt="$CABAL" />
       <span data-i18n="brand">$CABAL · WEALTH LEADERBOARD</span>
     </div>
-    <div class="lang-toggle" role="tablist">
-      <button data-lang-btn="en" class="active">EN</button>
-      <button data-lang-btn="zh">中文</button>
+    <div class="topbar-actions">
+      <button class="airdrop-btn" disabled aria-label="Claim Airdrop (coming soon)">
+        <span class="ad-emoji">🎁</span>
+        <span class="ad-label" data-i18n="airdrop-claim">Claim Airdrop</span>
+        <span class="ad-soon" data-i18n="coming-soon">Coming Soon</span>
+      </button>
+      <div class="lang-toggle" role="tablist">
+        <button data-lang-btn="en" class="active">EN</button>
+        <button data-lang-btn="zh">中文</button>
+      </div>
     </div>
   </div>
 
@@ -445,6 +537,11 @@ html[data-lang="zh"] footer .footer-token{font-family:'Noto Serif SC',serif;lett
       <div class="label" data-i18n="stat-holders">Holders</div>
       <div class="value" id="stat-holders">—</div>
       <div class="sub" data-i18n="stat-holders-sub">Unique addresses</div>
+    </div>
+    <div class="stat stat-burnt">
+      <div class="label" data-i18n="stat-burnt">$CABAL Burnt</div>
+      <div class="value burnt-value" id="stat-burnt">0</div>
+      <div class="sub" data-i18n="stat-burnt-sub">Burn tax activates post bonding curve</div>
     </div>
   </section>
 
@@ -524,7 +621,12 @@ const I18N = {
     'stat-mcap':'Market Cap', 'stat-mcap-sub':'Fully Diluted (USD)',
     'stat-supply':'Total Supply', 'stat-supply-sub':'$CABAL minted',
     'stat-holders':'Holders', 'stat-holders-sub':'Unique addresses',
+    'stat-burnt':'$CABAL Burnt', 'stat-burnt-sub':'Burn tax activates post bonding curve',
     'board-title':'⟡ The Fifty-Three · Roll of Honour ⟡',
+    'bonding-banner':'Currently in Bonding Curve · No tax on trading via four.meme',
+    'bonding-link':'Trade →',
+    'airdrop-claim':'Claim Airdrop',
+    'coming-soon':'Coming Soon',
     'last-updated':'Last updated',
     'live':'Live',
     'refresh':'Refresh',
@@ -556,7 +658,12 @@ const I18N = {
     'stat-mcap':'市值', 'stat-mcap-sub':'完全稀釋 (美元)',
     'stat-supply':'總供應量', 'stat-supply-sub':'已鑄造 $CABAL',
     'stat-holders':'持有人數', 'stat-holders-sub':'獨立地址',
+    'stat-burnt':'$CABAL 已銷毀', 'stat-burnt-sub':'聯合曲線完成後啟用銷毀稅',
     'board-title':'⟡ 五十三豪傑 · 英雄榜 ⟡',
+    'bonding-banner':'目前處於聯合曲線階段 · 透過 four.meme 交易免稅',
+    'bonding-link':'前往交易 →',
+    'airdrop-claim':'領取空投',
+    'coming-soon':'即將推出',
     'last-updated':'更新時間',
     'live':'直播',
     'refresh':'重新整理',
